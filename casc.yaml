@@ -1,0 +1,16 @@
+jenkins:
+  systemMessage: "Jenkins configurado automáticamente por JCasC"
+  numExecutors: 0
+  scmCheckoutRetryCount: 3
+  mode: NORMAL
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: ${JENKINS_ADMIN_ID}
+          password: ${JENKINS_ADMIN_PASSWORD}
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+
+ 

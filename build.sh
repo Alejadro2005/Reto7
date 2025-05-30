@@ -1,9 +1,12 @@
-mkdir -p /kaniko/.dockerconfig && ln -s /kaniko/.docker/.dockerconfigjson /kaniko/.dockerconfig/config.json
-IMAGE_ID=$1 && \
-IMAGE_TAG=$2 && \
-export DOCKER_CONFIG=/kaniko/.dockerconfig && \
+#!/bin/bash
+
+# Argumentos
+IMAGE_NAME=$1
+TAG=$2
+
+# Construir la imagen con Kaniko
 /kaniko/executor \
-  --context $(pwd) \
-  --dockerfile $(pwd)/Dockerfile \
-  --destination $IMAGE_ID:$IMAGE_TAG \
-  --force
+    --context $(pwd) \
+    --dockerfile Dockerfile \
+    --destination ${IMAGE_NAME}:${TAG} \
+    --cache=true
